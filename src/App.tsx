@@ -1,25 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {FC} from 'react';
 import './App.css';
+import CartLayout from './components/CartLayout';
+import NavLayout from './components/NavLayout';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import CartPageLayout from './components/CartPageLayout';
 
-function App() {
+
+const App:FC=()=> {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <NavLayout />
+        <Routes>
+          <Route path="/"  element={<CartLayout/>} />
+          <Route path="/cart" element={<CartPageLayout/>} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
