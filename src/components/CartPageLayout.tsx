@@ -27,6 +27,13 @@ const CartPageLayout: FC = () => {
         setCart(updatedCart);
     }
 
+    const handleRemoveAll = async() =>{
+        const products = await getProduct()
+        for(const product of products) {
+            await removeProduct(product.id)
+        } setCart([])
+    }
+
     return (
         <Box sx={{ padding: '32px' }}>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '32px', marginBottom: '32px' }}>
@@ -56,9 +63,11 @@ const CartPageLayout: FC = () => {
             ))}
           </div>
           <Divider />
-          <Box sx={{ marginTop: '32px', textAlign: 'right' }}>
-            <Typography variant="h6">Total Cost: ${getTotalCost(cart).toFixed(2)}</Typography>
-          </Box>
+          {/* Footer Layout */}
+          <Box sx={{ marginTop: '32px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <Typography variant="h6">Total Cost: ${getTotalCost(cart).toFixed(2)}</Typography>
+        <Button variant="contained" color="secondary" onClick={handleRemoveAll}>Remove All Items</Button>
+      </Box>
         </Box>
       );
 };

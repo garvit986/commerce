@@ -42,6 +42,9 @@ const CartLayout:FC=() =>{
         const updatedCart = await getProduct();
         setCart(updatedCart);
     }
+    const isProductInCart = (productId: number) => {
+        return cart.some(product => product.id === productId);
+    }
     
   return (
     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '32px', padding: '320px' }}>
@@ -65,8 +68,12 @@ const CartLayout:FC=() =>{
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Button size="small" onClick={()=>handleAdd(item)}>Add To Cart</Button>
-                    <Button size="small" onClick={()=>removeAdd(item.id)}>Remove From Cart</Button>
+                {/* Functionality to handle add and remove triggers */}
+                {isProductInCart(item.id) ? (
+                                <Button size="small" onClick={() => removeAdd(item.id)}>Remove From Cart</Button>
+                            ) : (
+                                <Button size="small" onClick={() => handleAdd(item)}>Add To Cart</Button>
+                            )}
                 </CardActions>
             </Card>
         ))}
