@@ -1,12 +1,12 @@
 import React, {FC} from 'react';
 import './App.css';
-import CartLayout from './components/CartLayout';
-import NavLayout from './components/NavLayout';
+import CartLayout from './CartLayout';
+import NavLayout from './NavLayout';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import CartPageLayout from './components/CartPageLayout';
+import CartPageLayout from './CartLayout';
 
 
-const App:FC=()=> {
+const RouterComponent:FC=()=> {
   return (
     <Router>
       <div>
@@ -20,4 +20,4 @@ const App:FC=()=> {
   );
 }
 
-export default App;
+export default RouterComponent;

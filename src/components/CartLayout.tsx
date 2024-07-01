@@ -41,7 +41,7 @@ const CartLayout: FC = () => {
     const updatedCart = await getProduct();
     setCart(updatedCart);
   };
-  const isProductInCart = (productId: number) => {
+  const isProduct = (productId: number) => {
     return cart.some((product) => product.id === productId);
   };
 
@@ -55,7 +55,7 @@ const CartLayout: FC = () => {
       }}
     >
       {data.map((item) => (
-        <Card key={item.id} sx={{ minWidth: 300, mr: 2, ml: 2 }}>
+        <Card key={item.id} sx={{ minWidth: 300, mr: 32, ml: 32 }}>
           <CardMedia
             component="img"
             image={item.image}
@@ -75,7 +75,7 @@ const CartLayout: FC = () => {
           </CardContent>
           <CardActions>
             {/* Functionality to handle add and remove triggers */}
-            {isProductInCart(item.id) ? (
+            {isProduct(item.id) ? (
               <Button size="small" onClick={() => removeAdd(item.id)}>
                 Remove From Cart
               </Button>
